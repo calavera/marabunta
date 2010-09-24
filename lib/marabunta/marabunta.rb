@@ -1,7 +1,5 @@
 module Marabunta
   require 'java'
-  require 'rubygems'
-  require 'murder'
 
   __JARS__ = File.expand_path('../../../jars', __FILE__)
   require File.expand_path('jna-3.0.9.jar', __JARS__)
