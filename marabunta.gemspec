@@ -69,6 +69,7 @@ Gem::Specification.new do |s|
     lib/marabunta/kvm.rb
     lib/marabunta/kvm_domain.erb
     lib/marabunta/marabunta.rb
+    marabunta.gemspec
     spec/marabunta/kvm_spec.rb
     spec/marabunta/marabunta_spec.rb
     spec/spec.opts
