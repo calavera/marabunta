@@ -13,6 +13,9 @@ and start the images once they are distributed.
 Currently Marabunta just supports deployments on Kvm but it can support as many hypervisors
 as Libvirt supports.
 
+It uses the libvirt jar library rather than ruby-libvirt because it's
+more up to date so the tasks must be run with JRuby.
+
 Configuration
 -------------
 
@@ -25,7 +28,7 @@ Marabunta can also be used without the deployment strategy. Follow the
 steps that Murder requires for the manual usage and then run the
 marabunta deploy task:
 
-  $ cap marabunta:deploy tag="MURDER_TAG_NAME"
+  $ jruby -S cap marabunta:deploy tag="MURDER_TAG_NAME"
 
 Copyright
 ---------
