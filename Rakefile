@@ -126,11 +126,6 @@ task :gemspec => :validate do
 end
 
 task :validate do
-  libfiles = Dir['lib/*'] - ["lib/#{name}.rb", "lib/#{name}"]
-  unless libfiles.empty?
-    puts "Directory `lib` should only contain a `#{name}.rb` file and `#{name}` dir."
-    exit!
-  end
   unless Dir['VERSION*'].empty?
     puts "A `VERSION` file at root level violates Gem best practices."
     exit!
