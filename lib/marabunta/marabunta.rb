@@ -4,6 +4,7 @@ module Marabunta
   __JARS__ = File.expand_path('../../../jars', __FILE__)
   require File.expand_path('jna-3.0.9.jar', __JARS__)
   require File.expand_path('libvirt-0.4.6.jar', __JARS__)
+  require File.expand_path('../ovf', __FILE__)
   require File.expand_path('../kvm', __FILE__)
 
 

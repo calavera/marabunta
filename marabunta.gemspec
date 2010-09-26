@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
   ## that are needed for an end user to actually USE your code.
   s.add_dependency('capistrano')
   s.add_dependency('murder')
+  s.add_dependency('nokogiri')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
