@@ -1,9 +1,6 @@
 require File.expand_path('../../spec_helper',  __FILE__)
 
 describe Marabunta::Hypervisor::Kvm do
-  before(:each) do
-  end
-
   it "creates a new instance for each connection" do
     org.libvirt.Connect.expects(:new).twice.returns(mock)
 
