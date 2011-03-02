@@ -1,0 +1,30 @@
+marabunta do |config|
+  # name of the target hypervisor
+  config.hypervisor = :Virtualbox
+
+  # where the disks to distribute are located
+  config.repository = '/tmp'
+
+  # host that's used as a seeder
+  config.seeder = 'localhost'
+
+  # host that's used as a tracker
+  config.tracker = 'localhost'
+
+  # list of hosts where the disks will be distributed
+  config.peers = ['10.60.1.2', '10.60.1.3', '10.60.1.4']
+
+  # path where the disks will be stored in the target host
+  # config.destination = '/var/lib/virt'
+
+  # path where murder is installed in the target host
+  # config.murder_path = '/var/lib/murder'
+
+  # options to configure the host address
+  # config.connection_options = {:user => 'root'}
+
+  # names of the disks to distribute.
+  # Marabunta scans the repository if this option is not present.
+  # It also accepts instances of Libvirt::Spec::Domain for a more detailed specification.
+  # config.disks = []
+end

@@ -34,8 +34,8 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   ## If your gem includes any executables, list them here.
-  #s.executables = ["name"]
-  #s.default_executable = 'name'
+  s.executables = ["marabunta"]
+  s.default_executable = 'marabunta'
 
   ## Specify any RDoc options here. You'll want to add your README and
   ## LICENSE files to the extra_rdoc_files list.
@@ -44,9 +44,10 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
+  s.add_dependency('thor')
   s.add_dependency('capistrano')
   s.add_dependency('murder')
-  s.add_dependency('nokogiri')
+  s.add_dependency('virtuoso')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development

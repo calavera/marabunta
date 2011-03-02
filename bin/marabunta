@@ -1,0 +1,4 @@
+require 'rubygems'
+require File.expand_path('../lib/marabunta', File.dirname(__FILE__))
+
+Marabunta::CLI.start

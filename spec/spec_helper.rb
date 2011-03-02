@@ -3,14 +3,14 @@ begin
   require 'spec'
 rescue LoadError
   gem 'rspec'
-  require 'spec'
+  require 'rspec'
 end
 
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
-require 'marabunta/marabunta'
+require 'marabunta'
 require 'mocha'
 
-Spec::Runner.configure do |config|
+Rspec.configure do |config|
   config.mock_with :mocha
 end

@@ -1,0 +1,67 @@
+GIT
+  remote: git://github.com/calavera/virtuoso.git
+  revision: 16328a873e75416259be9a334012958f628a2629
+  specs:
+    virtuoso (0.0.2.dev)
+      libvirt (~> 0.2)
+
+PATH
+  remote: .
+  specs:
+    marabunta (0.1.0)
+      capistrano
+      murder
+      thor
+      virtuoso
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    diff-lcs (1.1.2)
+    ffi (0.6.3)
+      rake (>= 0.8.7)
+    ffi (0.6.3-java)
+    highline (1.6.1)
+    libvirt (0.2.0)
+      ffi (~> 0.6.3)
+      nokogiri (~> 1.4.3)
+    mocha (0.9.11)
+      rake
+    murder (0.1.2)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.3)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
+    nokogiri (1.4.4)
+    nokogiri (1.4.4-java)
+      weakling (>= 0.0.3)
+    rake (0.8.7)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    thor (0.14.6)
+    weakling (0.0.4-java)
+
+PLATFORMS
+  java
+  ruby
+
+DEPENDENCIES
+  marabunta!
+  mocha
+  rspec
+  virtuoso!
