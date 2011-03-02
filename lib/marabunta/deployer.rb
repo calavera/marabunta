@@ -21,17 +21,12 @@ module Marabunta
         configuration.disks = configure_default_disks(configuration)
       end
 
-      hypervisor = configuration.hypervisor
-      unless Marabunta::Hypervisor.const_defined?(hypervisor)
-        raise "Unsupported hypervisor: #{hypervisor}"
-      end
-
-      hypervisor = Marabunta::Hypervisor.const_get(hypervisor)
+      hypervisor = define_hypervisor
 
       configuration.peers.each do |peer|
         connection = hypervisor.connect(peer, configuration.connection_options)
 
-        connection.deploy configuration.destination_path configuration.disks
+        connection.deploy configuration.final_path, configuration.disks
       end
     end
 
@@ -41,24 +36,13 @@ module Marabunta
       disks.split("\s+")
     end
 
-    private
-    def capify(configuration)
-      cap = Capistrano::Configuration.new({
-        :scm => :none,
-        :user => 'marabunta',
-        :repository => configuration.repository,
-        :default_seeder_files_path => configuration.repository,
-        :remote_murder_path => configuration.murder_path,
-        :default_destination_path => config.destination
-      })
+    def define_hypervisor
+      hypervisor = configuration.hypervisor
+      unless Marabunta::Hypervisor.const_defined?(hypervisor)
+        raise "Unsupported hypervisor: #{hypervisor}"
+      end
 
-      cap.role(:seeder, configuration.seeder)
-      cap.role(:tracker, configuration.tracker)
-      cap.role(:peers, configuration.peers)
-
-      Thread.current[:capistrano_configuration] = cap
-
-      cap
+      Marabunta::Hypervisor.const_get(hypervisor)
     end
 
     def distribute_disks
@@ -69,8 +53,27 @@ module Marabunta
 
       cap.find_and_execute_task 'murder:deploy'
 
-      cap.find_and_execute_task 'murder:stop_seeding'
       cap.find_and_execute_task 'murder:stop_tracker'
+      cap.find_and_execute_task 'murder:stop_seeding'
+    end
+
+    private
+    def capify(configuration)
+      cap = Capistrano::Configuration.new.tap do |cap|
+        cap.set :scm, :none
+        cap.set :user, 'marabunta'
+        cap.set :repository, configuration.repository
+        cap.set :default_seeder_files_path, configuration.repository
+        cap.set :remote_murder_path, configuration.murder_path
+        cap.set :default_destination_path, configuration.destination
+        cap.role(:seeder) { configuration.seeder }
+        cap.role(:tracker) { configuration.tracker }
+        cap.role(:peer) { configuration.peers }
+      end
+
+      Thread.current[:capistrano_configuration] = cap
+
+      cap
     end
   end
 end

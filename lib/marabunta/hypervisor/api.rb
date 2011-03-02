@@ -15,10 +15,10 @@ module Marabunta
       end
 
       def deploy(destination_path, disks)
-        VM = Virtuoso.const_get(self.class.name.split('::').last).const_get(:VM)
+        vm_class = Virtuoso.const_get(self.class.name.split('::').last).const_get(:VM)
 
         disks_path.each do |disk|
-          vm = VM.new @connection
+          vm = vm_class.new @connection
 
           if disk.is_a?(Libvirt::Spec::Domain)
             vm.set_domain disk
