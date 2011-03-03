@@ -5,8 +5,11 @@ module Marabunta
     class API
       attr_reader :address, :connection
 
-      def self.connect(address)
-        new(address).connect
+      def self.connect(address, opts = {})
+        new(address, opts).connect
+      end
+
+      def initialize(ip_address, opts = {})
       end
 
       def connect
@@ -15,9 +18,9 @@ module Marabunta
       end
 
       def deploy(destination_path, disks)
-        vm_class = Virtuoso.const_get(self.class.name.split('::').last).const_get(:VM)
+        vm_class = to_virt
 
-        disks_path.each do |disk|
+        disks.each do |disk|
           vm = vm_class.new @connection
 
           if disk.is_a?(Libvirt::Spec::Domain)
@@ -29,6 +32,15 @@ module Marabunta
           vm.save
           vm.start
         end
+      end
+
+      def to_virt
+        Virtuoso.const_get(hypervisor_name).const_get(:VM)
+      end
+
+      private
+      def hypervisor_name
+        self.class.name.split('::').last.to_sym
       end
     end
   end
