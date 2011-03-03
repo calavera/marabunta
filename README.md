@@ -23,7 +23,9 @@ There are some deployment configuration templates into the directory `examples`.
 Installation
 ------------
 
+<pre>
   $ gem install marabunta
+</pre>
 
 Usage
 -----
@@ -31,8 +33,10 @@ Usage
 Run it from the command line with the operation to execute. By default it
 takes the configuration file `Leiningen` if it exists into the directory:
 
+<pre>
   $ marabunta deploy             # configured via the file `Leiningen`
   $ marabunta deploy Config      # configured vid the file `Config`
+</pre>
 
 Copyright
 ---------
