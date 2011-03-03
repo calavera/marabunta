@@ -20,6 +20,9 @@ marabunta do |config|
   # path where murder is installed in the target host
   # config.murder_path = '/var/lib/murder'
 
+  # user name that Capistrano uses to connect with the machines
+  # config.cap_user = 'marabunta'
+
   # options to configure the host address
   # config.connection_options = {}
 

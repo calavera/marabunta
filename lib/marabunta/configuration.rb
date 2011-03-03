@@ -8,12 +8,14 @@ module Marabunta
                   :tracker,
                   :murder_path,
                   :disks,
-                  :connection_options
+                  :connection_options,
+                  :cap_user
 
     def initialize
       @peers, @connection_opts = []
       @destination = '/var/lib/virt'
       @murder_path = '/var/lib/murder'
+      @cap_user = 'marabunta'
     end
 
     def final_path

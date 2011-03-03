@@ -71,7 +71,7 @@ module Marabunta
     def capify(configuration)
       cap = Capistrano::Configuration.new.tap do |cap|
         cap.set :scm, :none
-        cap.set :user, 'marabunta'
+        cap.set :user, configuration.cap_user
         cap.set :repository, configuration.repository
         cap.set :default_seeder_files_path, configuration.repository
         cap.set :remote_murder_path, configuration.murder_path

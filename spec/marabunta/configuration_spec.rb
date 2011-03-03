@@ -9,6 +9,10 @@ describe Marabunta::Configuration do
     subject.murder_path.should == '/var/lib/murder'
   end
 
+  it "uses `marabunta` as default user name to connect to the nodes with Capistrano" do
+    subject.cap_user.should == 'marabunta'
+  end
+
   it 'generates the final destination path with destination + tag' do
     ENV['tag'] = 'foobar'
     subject.destination = '/tmp'
