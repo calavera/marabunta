@@ -75,4 +75,11 @@ describe "Marabunta::Deployer" do
     configuration.disks = disks.split("\s+")
     deployer.define_domains
   end
+
+  it "distributes murder's configuration files when invokes setup!" do
+    mock = Capistrano::Configuration.any_instance
+    mock.expects(:find_and_execute_task).with('murder:distribute_files').once
+
+    deployer.setup!
+  end
 end

@@ -34,8 +34,15 @@ Run it from the command line with the operation to execute. By default it
 takes the configuration file `Leiningen` if it exists into the directory:
 
 <pre>
-  $ marabunta deploy             # configured via the file `Leiningen`
-  $ marabunta deploy Config      # configured vid the file `Config`
+  $ marabunta setup
+  $ marabunta deploy
+</pre>
+
+Another configuration file can also be specified as a command argument:
+
+<pre>
+  $ marabunta setup config_file
+  $ marabunta deploy config_file
 </pre>
 
 Copyright

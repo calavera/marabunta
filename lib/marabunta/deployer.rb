@@ -11,6 +11,10 @@ module Marabunta
       @cap = capify configuration
     end
 
+    def setup!
+      distribute_instances
+    end
+
     def deploy!
       distribute_disks
       define_domains
@@ -55,6 +59,12 @@ module Marabunta
 
       cap.find_and_execute_task 'murder:stop_tracker'
       cap.find_and_execute_task 'murder:stop_seeding'
+    end
+
+    def distribute_instances
+      require 'murder'
+
+      cap.find_and_execute_task 'murder:distribute_files'
     end
 
     private
