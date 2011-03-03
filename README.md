@@ -7,30 +7,27 @@ How it works
 ------------
 
 Marabunta relies on Murder, http://github.com/lg/murder, to distribute
-the virtual disks to the cloud nodes and uses the Libvirt api to deploy
+the virtual disks to the cloud nodes and uses the Libvirt api via Virtuoso to deploy
 and start the images once they are distributed.
 
-Currently Marabunta just supports deployments on Kvm but it can support as many hypervisors
+Currently Marabunta supports deployments on Kvm and Virtualbox but it can support as many hypervisors
 as Libvirt supports.
-
-It uses the libvirt jar library rather than ruby-libvirt because it's
-more up to date so the tasks must be run with JRuby.
 
 Configuration
 -------------
 
-The most simple way to use Marabunta is setting the deployment strategy
-to `:marabunta`. It also requires to set the name of the `:hypervisor`.
-
 There are some deployment configuration templates into the directory `examples`.
 
-Marabunta can also be used without the deployment strategy. Follow the
-steps that Murder requires for the manual usage and then run the
-marabunta deploy task:
+Usage
+-----
 
-  $ jruby -S cap marabunta:deploy tag="MURDER_TAG_NAME"
+Run it from the command line with the operation to execute. By default it
+takes the configuration file `Leiningen` if it exists into the directory:
+
+  $ marabunta deploy             # configured via the file `Leiningen`
+  $ marabunta deploy Config      # configured vid the file `Config`
 
 Copyright
 ---------
 
-Copyright (c) 2010 David Calavera<calavera@apache.org>. See LICENSE for details.
+Copyright (c) 2011 David Calavera<calavera@apache.org>. See LICENSE for details.
